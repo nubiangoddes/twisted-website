@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — Twisted by NG Divine</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Montserrat',sans-serif;background:#FDF8F3;color:#1a1a1a;line-height:1.7;}
+
+.announce{background:linear-gradient(90deg,#7B2FBE,#E91E8C,#F57C00);padding:9px 0;text-align:center;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:white;}
+
+header{background:#FDF8F3;border-bottom:1px solid rgba(0,0,0,.06);padding:14px 5%;position:sticky;top:0;z-index:100;}
+.header-inner{display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto;}
+.nav-left{display:flex;gap:28px;}
+.nav-left a{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;color:#333;transition:color .2s;}
+.nav-left a:hover{color:#E91E8C;}
+.header-logo img{height:60px;display:block;}
+.nav-right{display:flex;align-items:center;gap:20px;font-size:17px;cursor:pointer;}
+.cart-wrap{position:relative;}
+.cart-badge{position:absolute;top:-7px;right:-7px;background:#E91E8C;color:white;font-size:8px;font-weight:700;width:15px;height:15px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+
+.breadcrumb{max-width:900px;margin:24px auto;padding:0 5%;font-size:12px;color:#888;letter-spacing:1px;}
+.breadcrumb a{color:#888;text-decoration:none;}
+.breadcrumb a:hover{color:#E91E8C;}
+.breadcrumb span{color:#E91E8C;font-weight:600;}
+
+/* PAGE HEADER */
+.page-header{
+  text-align:center;padding:60px 5% 48px;
+  max-width:700px;margin:0 auto;
+}
+.page-header h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.4rem,4vw,3.6rem);font-weight:700;
+  margin-bottom:12px;
+}
+.page-header h1 em{
+  font-style:italic;
+  background:linear-gradient(135deg,#7B2FBE,#E91E8C,#F57C00);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.page-header p{font-size:16px;color:#888;}
+
+/* FAQ SECTIONS */
+.faq-wrap{max-width:780px;margin:0 auto;padding:0 5% 80px;}
+
+.faq-section{margin-bottom:48px;}
+.faq-section-title{
+  font-family:'Playfair Display',serif;
+  font-size:20px;font-weight:700;
+  color:#1a1a1a;margin-bottom:20px;
+  padding-bottom:12px;
+  border-bottom:2px solid rgba(233,30,140,.2);
+  display:flex;align-items:center;gap:10px;
+}
+
+.faq-item{
+  background:white;border-radius:12px;
+  margin-bottom:12px;
+  box-shadow:0 2px 12px rgba(0,0,0,.05);
+  overflow:hidden;
+  border:1px solid rgba(0,0,0,.06);
+  transition:box-shadow .2s;
+}
+.faq-item:hover{box-shadow:0 4px 20px rgba(0,0,0,.08);}
+
+.faq-question{
+  width:100%;padding:20px 24px;
+  display:flex;justify-content:space-between;align-items:center;
+  background:none;border:none;cursor:pointer;
+  font-family:'Montserrat',sans-serif;
+  font-size:15px;font-weight:600;color:#1a1a1a;
+  text-align:left;gap:16px;
+  transition:color .2s;
+}
+.faq-question:hover{color:#E91E8C;}
+.faq-question.open{color:#7B2FBE;}
+
+.faq-icon{
+  font-size:20px;flex-shrink:0;
+  transition:transform .3s;color:#7B2FBE;
+  font-weight:300;
+}
+.faq-question.open .faq-icon{transform:rotate(45deg);}
+
+.faq-answer{
+  display:none;padding:0 24px 20px;
+  font-size:14px;color:#555;line-height:1.8;
+  border-top:1px solid rgba(0,0,0,.06);
+}
+.faq-answer.open{display:block;}
+.faq-answer p{margin-bottom:8px;}
+.faq-answer p:last-child{margin-bottom:0;}
+.faq-answer strong{color:#1a1a1a;font-weight:600;}
+.faq-answer a{color:#7B2FBE;text-decoration:none;}
+.faq-answer a:hover{color:#E91E8C;}
+
+/* CONTACT STRIP */
+.contact-strip{
+  background:linear-gradient(135deg,#7B2FBE,#E91E8C);
+  padding:56px 5%;text-align:center;color:white;
+}
+.contact-strip h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,3vw,2.6rem);
+  margin-bottom:12px;
+}
+.contact-strip p{font-size:15px;opacity:.85;margin-bottom:28px;}
+.contact-btn{
+  display:inline-block;background:white;
+  color:#7B2FBE;padding:14px 36px;
+  font-size:13px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;text-decoration:none;
+  border-radius:4px;transition:transform .2s,box-shadow .2s;
+}
+.contact-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.2);}
+
+
+footer a{color:#E91E8C;text-decoration:none;margin:0 10px;}
+
+@media(max-width:768px){
+  .nav-left{display:none;}
+  .faq-question{font-size:14px;padding:16px 18px;}
+  .faq-answer{padding:0 18px 16px;}
+}
+
+footer{
+  background:#1a1a1a;color:white;
+  text-align:center;padding:48px 5% 28px;
+}
+.footer-sig{margin-bottom:24px;}
+.footer-brand-name{
+  font-family:'Playfair Display',serif;
+  font-size:22px;font-weight:700;
+  background:linear-gradient(135deg,#7B2FBE,#E91E8C,#F57C00);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;margin-bottom:6px;
+}
+.footer-tagline{font-size:13px;color:#aaa;font-style:italic;margin-bottom:4px;}
+.footer-founded{font-size:12px;color:#666;}
+.footer-links{
+  display:flex;justify-content:center;
+  gap:24px;flex-wrap:wrap;margin-bottom:24px;
+}
+.footer-links a{
+  color:#ccc;text-decoration:none;font-size:13px;
+  font-weight:500;letter-spacing:1px;
+  transition:color .2s;
+}
+.footer-links a:hover{color:#E91E8C;}
+.footer-copy{font-size:11px;color:#555;font-style:italic;}
+</style>
+</head>
+<body>
+
+<div class="announce">✨ FREE SHIPPING ON ORDERS $40+ &nbsp;💜&nbsp; CONFIDENCE CARD INCLUDED WITH EVERY ORDER 💜</div>
+
+<header>
+  <div class="header-inner">
+    <nav class="nav-left">
+      <a href="index.html">Shop</a>
+      <a href="index.html#story">Our Story</a>
+      <a href="index.html#confidence">Confidence Cards</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <div class="header-logo">
+      <a href="index.html"><img src="images/faq-img1.png" alt="Twisted by NG Divine" /></a>
+    </div>
+    <div class="nav-right">
+      <span>🔍</span><span>👤</span>
+      <span class="cart-wrap">🛒<span class="cart-badge">0</span></span>
+    </div>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a> / <span>FAQ</span>
+</div>
+
+<div class="page-header">
+  <h1>Got <em>Questions?</em></h1>
+  <p>We've got answers. Everything you need to know about Twisted by NG Divine.</p>
+</div>
+
+<div class="faq-wrap">
+
+  <!-- ORDERS & SHIPPING -->
+  <div class="faq-section">
+    <h2 class="faq-section-title">📦 Orders & Shipping</h2>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggle(this)">
+        How long does shipping take?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Orders are handcrafted and typically ship within <strong>3–5 business days</strong>. Once shipped, standard delivery takes <strong>5–7 business days</strong> within the U.S.</p>
+        <p>You'll receive a tracking link by email as soon as your order ships.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggle(this)">
+        How much does shipping cost?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p><strong>$5 flat rate</strong> shipping on all U.S. orders.</p>
+        <p>✨ <strong>FREE shipping</strong> on orders $40 or more. Buy 2 pairs and shipping is usually free!</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggle(this)">
+        Do you ship internationally?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Currently we ship within the <strong>United States only</strong>. International shipping is coming soon — join the Bold List to be the first to know when it launches.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggle(this)">
+        Can I track my order?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Yes! Once your order ships you'll receive a confirmation email with your tracking number. If you don't see it, check your spam folder or <a href="mailto:twistedbyngdivine@gmail.com">contact us</a>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCTS -->
+  <div class="faq-section">
+    <h2 class="faq-section-title">💜 Products</h2>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggle(this)">
+        What are Twisted earrings made from?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Every pair is <strong>handcrafted from upcycled ponytail holders</strong> and transformed into wearable art. We give everyday materials a second life — bold, beautiful, and one of a kind.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggle(this)">
+        Will my earrings look exactly like the photos?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Because every pair is <strong>handmade</strong>, your earrings may vary slightly from the photos shown. The colors, twist pattern, and texture will be consistent — but no two pairs are ever exactly alike. That's what makes them special. ✦</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggle(this)">
+        What sizes are available?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>All Twisted earrings come in three sizes:</p>
+        <p>✨ <strong>Signature Twist</strong> — 2 inches — $20</p>
+        <p>🔥 <strong>Bold Twist</strong> — 3 inches — $25</p>
+        <p>👑 <strong>Main Character Twist</strong> — 4 inches — $30</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggle(this)">
+        Are clip-on options available?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Yes! All styles are available in both <strong>pierced and clip-on</strong>. Select your preference on the product page before adding to cart.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggle(this)">
+        How do I care for my Twisted earrings?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>To keep your earrings looking their best:</p>
+        <p>• <strong>Avoid water</strong> — remove before swimming, showering, or washing hands</p>
+        <p>• <strong>Store flat</strong> in a dry place away from direct sunlight</p>
+        <p>• <strong>Handle gently</strong> — the fabric material is handcrafted and should be treated with care</p>
+        <p>• <strong>Spot clean only</strong> if needed with a slightly damp cloth</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT'S INCLUDED -->
+  <div class="faq-section">
+    <h2 class="faq-section-title">🎁 What's Included</h2>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggle(this)">
+        What comes in my Twisted order?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Every Twisted order includes:</p>
+        <p>💜 Handmade Twisted Earrings</p>
+        <p>💜 Collectible Confidence Card</p>
+        <p>💜 Thank You Card</p>
+        <p>💜 Brand Story Card</p>
+        <p>💜 Signature Twisted Packaging</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggle(this)">
+        What is the Confidence Card?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Every order includes a <strong>collectible Twisted Confidence Card</strong> — a keepsake card with a message designed to inspire and uplift.</p>
+        <p>There are multiple cards in the collection and the one you receive is part of the surprise. Collect them all. 💜</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RETURNS -->
+  <div class="faq-section">
+    <h2 class="faq-section-title">🔄 Returns & Exchanges</h2>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggle(this)">
+        What is your return policy?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Because every pair is <strong>handmade to order</strong>, we do not accept returns or exchanges unless your item arrives damaged or defective.</p>
+        <p>If there's an issue with your order, please <a href="mailto:twistedbyngdivine@gmail.com">contact us within 7 days</a> of receiving it and we'll make it right.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggle(this)">
+        My order arrived damaged. What do I do?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>We're so sorry to hear that! Please email us at <a href="mailto:twistedbyngdivine@gmail.com">twistedbyngdivine@gmail.com</a> within <strong>7 days of delivery</strong> with:</p>
+        <p>• Your order number</p>
+        <p>• A photo of the damaged item</p>
+        <p>We'll send a replacement as quickly as possible. 💜</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="faq-section">
+    <h2 class="faq-section-title">✨ About Twisted</h2>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggle(this)">
+        Who is behind Twisted by NG Divine?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Twisted was created by <strong>Natasha Dyson</strong>, founder of NG Divine. What started as an idea to transform everyday materials into wearable art became a brand built on confidence, individuality, and self-expression.</p>
+        <p>Every piece is designed to bend the rules. 💜</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggle(this)">
+        How can I follow Twisted on social media?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Follow us for new drops, behind-the-scenes content, and real women wearing Twisted:</p>
+        <p>📷 Instagram: <a href="https://instagram.com/nubiancolourgoddess">@nubiancolourgoddess</a></p>
+        <p>🎵 TikTok: <a href="https://tiktok.com/@natashadyson6">@natashadyson6</a></p>
+        <p>And tag your photos with <strong>#TwistedAndBold</strong> to be featured in Twisted in the Wild! 🌀</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CONTACT STRIP -->
+<div class="contact-strip">
+  <h2>Still have questions?</h2>
+  <p>We'd love to hear from you. Reach out and we'll get back to you as soon as possible.</p>
+  <a href="mailto:twistedbyngdivine@gmail.com" class="contact-btn">Contact Us</a>
+</div>
+
+<footer>
+  <div class="footer-sig">
+    <p class="footer-brand-name">Twisted by NG Divine</p>
+    <p class="footer-tagline">Bold. Colorful. Unapologetically You.</p>
+    <p class="footer-founded">Founded by Natasha Dyson</p>
+  </div>
+  <div class="footer-links">
+    <a href="https://instagram.com/nubiancolourgoddess" target="_blank" rel="noopener noreferrer">Instagram</a>
+    <a href="https://tiktok.com/@natashadyson6" target="_blank" rel="noopener noreferrer">TikTok</a>
+    <a href="https://github.com/nubiangoddes" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="mailto:twistedbyngdivine@gmail.com">Email</a>
+    <a href="https://www.twistedbyngdivine.com">Website</a>
+  </div>
+  <p class="footer-copy">© 2026 Twisted by NG Divine · twistedbyngdivine@gmail.com · www.twistedbyngdivine.com</p>
+</footer>
+
+<script>
+function toggle(btn) {
+  const answer = btn.nextElementSibling;
+  const isOpen = btn.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('open'));
+  document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+  // Open clicked if it wasn't already open
+  if (!isOpen) {
+    btn.classList.add('open');
+    answer.classList.add('open');
+  }
+}
+</script>
+</body>
+</html>
